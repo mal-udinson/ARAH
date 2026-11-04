@@ -1,0 +1,190 @@
+/* ARAH Admin: tema mengikuti halaman login (indigo ke magenta, glass, input biru muda) */
+
+:root {
+    --ah-navy: #1e2a6b;
+    --ah-indigo: #4f46e5;
+    --ah-ink: #1e293b;
+    --ah-line: #eef0f4;
+    --ah-soft: rgba(224, 231, 255, .85);
+}
+
+body {
+    background:
+        linear-gradient(rgba(255,255,255,.035) 1px, transparent 1px) 0 0 / 44px 44px,
+        linear-gradient(90deg, rgba(255,255,255,.035) 1px, transparent 1px) 0 0 / 44px 44px,
+        radial-gradient(720px 420px at 88% 0%, rgba(167,139,250,.38), transparent 65%),
+        linear-gradient(135deg, #1a1660 0%, #2b2a9e 38%, #4a35c4 62%, #8a24b5 100%) !important;
+    background-attachment: fixed !important;
+    min-height: 100vh;
+}
+
+/* ---------- Layout ---------- */
+.ah-page { max-width: 1280px; margin: 0 auto; padding: 34px 22px 64px; color: #fff; }
+.ah-page--md { max-width: 900px; }
+.ah-page--sm { max-width: 1100px; }
+
+.ah-head { display: flex; justify-content: space-between; align-items: flex-end; gap: 20px; flex-wrap: wrap; margin-bottom: 26px; }
+.ah-hero { display: flex; justify-content: space-between; align-items: center; gap: 28px; margin-bottom: 32px; }
+
+.ah-chip {
+    display: inline-block; margin-bottom: 12px; padding: 6px 12px; border-radius: 999px;
+    background: rgba(255,255,255,.12); border: 1px solid rgba(255,255,255,.22);
+    font-size: 11px; font-weight: 600; color: #e0e7ff;
+}
+.ah-title { margin: 0; font-size: clamp(26px, 4.4vw, 40px); font-weight: 700; line-height: 1.15; color: #fff; }
+.ah-sub { margin: 10px 0 0; max-width: 620px; font-size: 14px; line-height: 1.6; color: var(--ah-soft); }
+.ah-back { display: inline-block; margin-bottom: 14px; font-size: 12px; color: var(--ah-soft); text-decoration: none; }
+.ah-back:hover { color: #fff; }
+
+.ah-orb {
+    flex: none; width: 150px; height: 150px; display: grid; place-items: center; border-radius: 50%;
+    border: 1px dashed rgba(255,255,255,.35);
+    background: radial-gradient(circle, rgba(167,139,250,.38), transparent 70%);
+}
+.ah-orb svg { width: 60px; height: 60px; }
+
+/* ---------- Tombol ---------- */
+.ah-btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+    min-height: 44px; padding: 0 20px; border-radius: 14px; border: 1px solid transparent;
+    font-family: inherit; font-size: 13px; font-weight: 600; text-decoration: none; cursor: pointer;
+    transition: transform .15s, box-shadow .15s;
+}
+.ah-btn:hover { transform: translateY(-1px); }
+.ah-btn:focus-visible, .ah-act:focus-visible { outline: 3px solid rgba(165,180,252,.8); outline-offset: 2px; }
+.ah-btn--white { background: #fff; color: var(--ah-indigo); box-shadow: 0 10px 24px -10px rgba(0,0,0,.5); }
+.ah-btn--navy {
+    background: linear-gradient(135deg, #1e2a6b, #4338ca); color: #fff;
+    border-color: rgba(255,255,255,.28); box-shadow: 0 14px 30px -12px rgba(20,16,90,.9);
+}
+
+/* ---------- Kartu ---------- */
+.ah-grid { display: grid; gap: 18px; }
+.ah-grid--stat { grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); margin-bottom: 22px; }
+.ah-grid--menu { grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); }
+
+.ah-card { background: #fff; color: var(--ah-ink); border-radius: 20px; overflow: hidden; box-shadow: 0 24px 50px -26px rgba(10,6,60,.7); }
+.ah-card--pad { padding: 24px; }
+.ah-glass {
+    background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.2); border-radius: 20px;
+    -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px);
+}
+
+.ah-stat { padding: 22px; }
+.ah-stat__label { font-size: 12px; font-weight: 600; color: #94a3b8; }
+.ah-stat__value { margin-top: 6px; font-size: 32px; font-weight: 700; line-height: 1.1; color: var(--ah-ink); }
+.ah-stat__note { margin-top: 4px; font-size: 11px; color: #64748b; }
+
+.ah-menu { display: block; padding: 22px; color: #fff; text-decoration: none; }
+.ah-menu--link { transition: background .15s, transform .15s; }
+.ah-menu--link:hover { background: rgba(255,255,255,.17); transform: translateY(-2px); }
+.ah-menu h2 { margin: 0; font-size: 16px; font-weight: 600; }
+.ah-menu p { margin: 7px 0 18px; font-size: 12px; line-height: 1.6; color: var(--ah-soft); }
+.ah-menu small { font-size: 11px; color: #c7d2fe; }
+.ah-icon {
+    width: 42px; height: 42px; display: grid; place-items: center; margin-bottom: 16px;
+    border-radius: 12px; background: #fff; color: var(--ah-indigo); font-weight: 700;
+}
+
+/* ---------- Tabel ---------- */
+.ah-table { width: 100%; border-collapse: collapse; }
+.ah-table th { padding: 15px 20px; background: #f5f3ff; font-size: 12px; font-weight: 600; color: #6d6a9c; text-align: left; }
+.ah-table td { padding: 16px 20px; border-top: 1px solid var(--ah-line); font-size: 12px; color: #475569; }
+.ah-table td.ah-empty { display: block; padding: 50px; text-align: center; font-size: 13px; color: #94a3b8; }
+.ah-c { text-align: center !important; }
+.ah-r { text-align: right !important; }
+.ah-name { font-size: 13px; font-weight: 600; color: var(--ah-ink); }
+.ah-name small { display: block; margin-top: 3px; font-size: 11px; font-weight: 400; color: #94a3b8; }
+.ah-code { font-weight: 600; color: #475569; }
+.ah-actions { display: inline-flex; align-items: center; gap: 8px; }
+
+.ah-act {
+    display: inline-flex; align-items: center; min-height: 34px; padding: 0 13px; border: 0; border-radius: 10px;
+    background: #f1f2fb; color: var(--ah-navy); font-family: inherit; font-size: 11px; font-weight: 600;
+    text-decoration: none; cursor: pointer;
+}
+.ah-act--danger { background: #fef2f2; color: #dc2626; }
+.ah-act--ok { background: #ecfdf5; color: #059669; }
+
+.ah-badge { display: inline-block; padding: 5px 10px; border-radius: 999px; font-size: 11px; font-weight: 600; }
+.ah-badge--ok { background: #ecfdf5; color: #047857; }
+.ah-badge--off { background: #fef2f2; color: #b91c1c; }
+.ah-badge--glass.ah-badge--ok { background: rgba(52,211,153,.18); color: #a7f3d0; border: 1px solid rgba(167,243,208,.35); }
+.ah-badge--glass.ah-badge--off { background: rgba(248,113,113,.18); color: #fecaca; border: 1px solid rgba(254,202,202,.35); }
+
+.ah-flash {
+    margin-bottom: 18px; padding: 12px 16px; border-radius: 14px; font-size: 13px;
+    background: rgba(52,211,153,.16); border: 1px solid rgba(167,243,208,.4); color: #d1fae5;
+}
+.ah-flash--err { background: rgba(248,113,113,.16); border-color: rgba(254,202,202,.4); color: #fee2e2; }
+
+/* ---------- Form (gaya login) ---------- */
+.ah-form { padding: 26px; }
+.ah-fields { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.ah-full { grid-column: 1 / -1; }
+.ah-label { display: block; margin-bottom: 8px; font-size: 12px; font-weight: 600; color: #fff; }
+.ah-input {
+    width: 100%; box-sizing: border-box; min-height: 48px; padding: 12px 16px; border-radius: 14px;
+    border: 1px solid transparent; background: #e8f0fe; color: var(--ah-ink);
+    font-family: inherit; font-size: 14px; outline: 0; transition: box-shadow .15s;
+}
+.ah-input::placeholder { color: #7b8aa5; }
+.ah-input:focus { border-color: #a5b4fc; box-shadow: 0 0 0 3px rgba(165,180,252,.55); }
+textarea.ah-input { min-height: 112px; resize: vertical; }
+.ah-error { margin-top: 6px; font-size: 12px; color: #fecdd3; }
+.ah-foot { display: flex; justify-content: flex-end; margin-top: 26px; }
+
+.ah-seg { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.ah-seg label { position: relative; display: block; cursor: pointer; }
+.ah-seg input { position: absolute; inset: 0; margin: 0; opacity: 0; cursor: pointer; }
+.ah-seg span {
+    display: flex; align-items: center; justify-content: center; min-height: 48px; border-radius: 14px;
+    background: rgba(255,255,255,.12); border: 1px solid rgba(255,255,255,.25);
+    color: #fff; font-size: 13px; font-weight: 600; transition: background .15s, color .15s;
+}
+.ah-seg input:checked + span { background: #fff; border-color: #fff; color: var(--ah-indigo); }
+.ah-seg input:focus-visible + span { box-shadow: 0 0 0 3px rgba(165,180,252,.8); }
+
+/* ---------- Detail ---------- */
+.ah-info { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; margin-top: 22px; }
+.ah-k { font-size: 12px; color: #94a3b8; }
+.ah-v { margin-top: 5px; font-size: 14px; color: #334155; word-break: break-word; }
+.ah-h2 { margin: 0; font-size: 17px; font-weight: 600; color: var(--ah-ink); }
+
+/* ---------- Mobile (APK) ---------- */
+@media (max-width: 720px) {
+    .ah-page { padding: 24px 16px 48px; }
+    .ah-orb { display: none; }
+    .ah-info { grid-template-columns: 1fr; }
+
+    .ah-table thead { display: none; }
+    .ah-table, .ah-table tbody, .ah-table tr { display: block; width: 100%; }
+    .ah-table tr { padding: 14px 18px; border-top: 1px solid var(--ah-line); }
+    .ah-table tr:first-child { border-top: 0; }
+    .ah-table td {
+        display: flex; justify-content: space-between; align-items: center; gap: 12px;
+        padding: 6px 0; border: 0; text-align: right !important;
+    }
+    .ah-table td::before { content: attr(data-label); font-size: 11px; font-weight: 500; color: #94a3b8; text-align: left; }
+    .ah-table td.ah-first { display: block; text-align: left !important; }
+    .ah-table td.ah-first::before, .ah-table td.ah-end::before { display: none; }
+    .ah-table td.ah-end { justify-content: flex-end; padding-top: 12px; }
+    .ah-act { min-height: 40px; }
+}
+
+@media (max-width: 640px) {
+    .ah-fields { grid-template-columns: 1fr; }
+    .ah-foot .ah-btn { width: 100%; }
+    .ah-head .ah-btn { width: 100%; }
+}
+
+@media (max-width: 560px) {
+    .ah-grid--stat { grid-template-columns: 1fr 1fr; gap: 12px; }
+    .ah-stat { padding: 16px; }
+    .ah-stat__value { font-size: 26px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .ah-btn, .ah-menu--link, .ah-input, .ah-seg span { transition: none; }
+    .ah-btn:hover, .ah-menu--link:hover { transform: none; }
+}

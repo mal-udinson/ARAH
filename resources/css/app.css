@@ -1,0 +1,699 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* =====================================================
+   ARAH SUBTLE ANIMATIONS
+===================================================== */
+/* =====================================================
+   ARAH SUBTLE ANIMATION
+===================================================== */
+
+@keyframes arahPageEnter {
+    from {
+        opacity: 0;
+        transform: translateY(14px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes arahFloat {
+    0%, 100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-4px);
+    }
+}
+
+.arah-enter {
+    animation: arahPageEnter .65s cubic-bezier(.22, 1, .36, 1) both;
+}
+
+.arah-delay-1 {
+    animation-delay: .08s;
+}
+
+.arah-delay-2 {
+    animation-delay: .16s;
+}
+
+.arah-delay-3 {
+    animation-delay: .24s;
+}
+
+.arah-delay-4 {
+    animation-delay: .32s;
+}
+
+.arah-delay-5 {
+    animation-delay: .40s;
+}
+
+.arah-mascot-float {
+    animation: arahFloat 4s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .arah-enter,
+    .arah-mascot-float {
+        animation: none !important;
+    }
+}
+
+/* =====================================================
+   NARA AI LOADING
+===================================================== */
+
+.nara-loading {
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 99999;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 24px;
+
+    background: rgba(247, 252, 255, .94);
+
+    backdrop-filter: blur(12px);
+
+    opacity: 0;
+
+    visibility: hidden;
+
+    pointer-events: none;
+
+    transition:
+        opacity .25s ease,
+        visibility .25s ease;
+}
+
+.nara-loading.show {
+    opacity: 1;
+
+    visibility: visible;
+
+    pointer-events: auto;
+}
+
+.nara-loading-card {
+    width: min(430px, 100%);
+
+    padding: 34px 30px 30px;
+
+    text-align: center;
+
+    background: #fff;
+
+    border: 1px solid #e2f0f6;
+
+    border-radius: 24px;
+
+    box-shadow:
+        0 24px 70px rgba(0, 120, 180, .12);
+
+    animation: naraLoadingIn .4s ease both;
+}
+
+@keyframes naraLoadingIn {
+
+    from {
+        opacity: 0;
+        transform: translateY(12px) scale(.98);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+
+}
+
+.nara-loading-mascot {
+    width: 100px;
+    height: 100px;
+
+    margin: 0 auto 16px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #eefaff;
+
+    border-radius: 22px;
+
+    animation: arahFloat 4s ease-in-out infinite;
+
+    overflow: hidden;
+}
+
+.nara-loading-mascot img {
+    width: 82px !important;
+    height: 82px !important;
+
+    max-width: 82px !important;
+    max-height: 82px !important;
+
+    object-fit: contain !important;
+}
+
+.nara-loading-label {
+    color: #008fd3;
+
+    font-size: 9px;
+
+    font-weight: 850;
+
+    letter-spacing: .12em;
+
+    text-transform: uppercase;
+}
+
+.nara-loading-card h2 {
+    margin: 7px 0 7px;
+
+    color: #12344b;
+
+    font-size: 24px;
+
+    line-height: 1.2;
+
+    font-weight: 900;
+
+    letter-spacing: -.035em;
+}
+
+.nara-loading-card p {
+    margin: 0 auto;
+
+    max-width: 330px;
+
+    color: #718899;
+
+    font-size: 10px;
+
+    line-height: 1.75;
+}
+
+.nara-loading-steps {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 10px;
+
+    margin-top: 25px;
+
+    text-align: left;
+}
+
+.nara-loading-step {
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    padding: 9px 11px;
+
+    color: #94a6b2;
+
+    background: #f8fbfd;
+
+    border: 1px solid transparent;
+
+    border-radius: 10px;
+
+    font-size: 9px;
+
+    font-weight: 700;
+
+    transition:
+        color .3s ease,
+        background .3s ease,
+        border-color .3s ease;
+}
+
+.nara-loading-step.active {
+    color: #087fb9;
+
+    background: #f1faff;
+
+    border-color: #d9f0fa;
+}
+
+.nara-step-icon {
+    width: 17px;
+    height: 17px;
+
+    flex: 0 0 17px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border: 2px solid #d9e8ef;
+
+    border-radius: 50%;
+
+    color: #fff;
+
+    font-size: 9px;
+}
+
+.nara-loading-step.active .nara-step-icon {
+    border-color: #00a7ea;
+
+    background: #00a7ea;
+}
+
+.nara-loading-step.done .nara-step-icon {
+    border-color: #00a7ea;
+
+    background: #00a7ea;
+}
+
+.nara-loading-dots {
+    display: flex;
+
+    justify-content: center;
+
+    gap: 5px;
+
+    margin-top: 22px;
+}
+
+.nara-loading-dots span {
+    width: 5px;
+    height: 5px;
+
+    border-radius: 50%;
+
+    background: #00a7ea;
+
+    animation: naraDot 1.2s infinite ease-in-out;
+}
+
+.nara-loading-dots span:nth-child(2) {
+    animation-delay: .15s;
+}
+
+.nara-loading-dots span:nth-child(3) {
+    animation-delay: .30s;
+}
+
+/* FORCE STYLE TOMBOL REKOMENDASI */
+#generateRecommendationBtn {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 8px !important;
+
+    padding: 11px 18px !important;
+
+    color: #ffffff !important;
+    background: linear-gradient(135deg, #08a8ee, #007fe8) !important;
+
+    border: 0 !important;
+    border-radius: 10px !important;
+
+    font-size: 10px !important;
+    font-weight: 800 !important;
+    line-height: 1 !important;
+    text-decoration: none !important;
+
+    cursor: pointer !important;
+
+    box-shadow: 0 8px 20px rgba(0, 135, 220, .16) !important;
+
+    transition:
+        transform .2s ease,
+        box-shadow .2s ease,
+        filter .2s ease !important;
+}
+
+#generateRecommendationBtn:hover {
+    color: #ffffff !important;
+
+    transform: translateY(-2px) !important;
+
+    box-shadow: 0 12px 25px rgba(0, 135, 220, .22) !important;
+
+    filter: brightness(1.03) !important;
+}
+
+#generateRecommendationBtn:active {
+    transform: translateY(0) !important;
+}
+
+/* =====================================================
+   ARAH DESIGN SYSTEM
+===================================================== */
+
+:root {
+    --arah-primary: #009fe8;
+    --arah-primary-dark: #007ed1;
+    --arah-cyan: #00c7ff;
+
+    --arah-navy: #12344b;
+    --arah-text: #476679;
+    --arah-muted: #8296a4;
+
+    --arah-bg: #f7fbfd;
+    --arah-surface: #ffffff;
+    --arah-soft: #eefaff;
+
+    --arah-border: #dfeef5;
+
+    --arah-radius-sm: 10px;
+    --arah-radius-md: 15px;
+    --arah-radius-lg: 20px;
+    --arah-radius-xl: 24px;
+
+    --arah-shadow-sm:
+        0 5px 18px rgba(0, 120, 180, .05);
+
+    --arah-shadow-md:
+        0 12px 32px rgba(0, 120, 180, .08);
+
+    --arah-shadow-lg:
+        0 20px 55px rgba(0, 120, 180, .10);
+}
+
+/* GLOBAL */
+
+body {
+    font-family: 'Poppins', sans-serif;
+    color: var(--arah-text);
+    background: var(--arah-bg);
+}
+
+/* PANEL */
+
+.arah-panel,
+.interest-panel,
+.recommendation-card {
+    border-color: var(--arah-border);
+    border-radius: var(--arah-radius-lg);
+}
+
+/* HOVER CARD */
+
+.arah-panel,
+.interest-panel,
+.recommendation-card {
+    transition:
+        transform .22s ease,
+        box-shadow .22s ease,
+        border-color .22s ease;
+}
+
+.arah-panel:hover,
+.interest-panel:hover,
+.recommendation-card:hover {
+    transform: translateY(-2px);
+
+    box-shadow: var(--arah-shadow-md);
+
+    border-color: #cde8f4;
+}
+
+/* BUTTON */
+
+.arah-btn {
+    font-family: 'Poppins', sans-serif;
+
+    border-radius: var(--arah-radius-sm);
+
+    transition:
+        transform .2s ease,
+        box-shadow .2s ease,
+        background .2s ease;
+}
+
+.arah-btn:hover {
+    transform: translateY(-1px);
+}
+
+/* PRIMARY BUTTON */
+
+.arah-btn-primary {
+    color: #fff;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--arah-cyan),
+            var(--arah-primary-dark)
+        );
+
+    box-shadow:
+        0 8px 20px rgba(0, 145, 220, .14);
+}
+
+.arah-btn-primary:hover {
+    box-shadow:
+        0 12px 26px rgba(0, 145, 220, .20);
+}
+
+/* SECONDARY BUTTON */
+
+.arah-btn-secondary {
+    color: var(--arah-primary);
+
+    background: #fff;
+
+    border: 1px solid var(--arah-border);
+}
+
+.arah-btn-secondary:hover {
+    background: var(--arah-soft);
+
+    border-color: #c8e8f5;
+}
+
+/* NARA */
+
+.nara-bubble {
+    border-color: var(--arah-border);
+
+    border-radius: var(--arah-radius-lg);
+
+    box-shadow: var(--arah-shadow-sm);
+}
+
+/* STATUS / BADGE */
+
+.arah-badge {
+    display: inline-flex;
+
+    align-items: center;
+
+    padding: 5px 9px;
+
+    border-radius: 999px;
+
+    font-size: 9px;
+
+    font-weight: 700;
+
+    line-height: 1;
+}
+
+.arah-badge-blue {
+    color: #007fbe;
+
+    background: #ebf9ff;
+}
+
+.arah-badge-green {
+    color: #16805b;
+
+    background: #edf9f4;
+}
+
+.arah-badge-orange {
+    color: #a96a12;
+
+    background: #fff7e9;
+}
+
+/* SECTION LABEL */
+
+.arah-section-label {
+    color: var(--arah-primary);
+
+    font-size: 9px;
+
+    font-weight: 800;
+
+    letter-spacing: .11em;
+
+    text-transform: uppercase;
+}
+
+/* HEADINGS */
+
+.arah-section-title {
+    margin: 5px 0 0;
+
+    color: var(--arah-navy);
+
+    font-size: 21px;
+
+    font-weight: 800;
+
+    letter-spacing: -.035em;
+}
+
+/* LINKS */
+
+.arah-link {
+    color: var(--arah-primary);
+
+    font-weight: 700;
+
+    text-decoration: none;
+
+    transition: color .2s ease;
+}
+
+.arah-link:hover {
+    color: var(--arah-primary-dark);
+}
+
+/* FORM */
+
+.arah-input,
+.arah-select {
+    width: 100%;
+
+    color: var(--arah-navy);
+
+    background: #fff;
+
+    border: 1px solid var(--arah-border);
+
+    border-radius: var(--arah-radius-sm);
+
+    transition:
+        border-color .2s ease,
+        box-shadow .2s ease;
+}
+
+.arah-input:focus,
+.arah-select:focus {
+    outline: none;
+
+    border-color: #83d5f5;
+
+    box-shadow:
+        0 0 0 3px rgba(0, 159, 232, .08);
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 700px) {
+
+    .arah-section-title {
+        font-size: 18px;
+    }
+
+    .arah-panel:hover,
+    .interest-panel:hover,
+    .recommendation-card:hover {
+        transform: none;
+
+        box-shadow: var(--arah-shadow-sm);
+    }
+}
+
+/* =====================================================
+   ARAH TYPOGRAPHY REFINEMENT
+===================================================== */
+
+body {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+}
+
+/* text umum */
+.arah-nara-text,
+.nara-bubble-message,
+.dna-description,
+.arah-description {
+    font-weight: 400 !important;
+}
+
+/* label */
+.arah-section-label,
+.arah-nara-status,
+.nara-bubble-label,
+.dna-label {
+    font-weight: 500 !important;
+}
+
+/* judul kecil */
+.arah-section-title,
+.arah-nara-name,
+.dna-category {
+    font-weight: 500 !important;
+}
+
+/* heading utama */
+.dna-name,
+.arah-hero h1,
+.arah-hero h2 {
+    font-weight: 600 !important;
+}
+
+/* angka / score */
+.arah-score,
+.dna-index-number,
+.arah-metric-value {
+    font-weight: 500 !important;
+}
+
+/* tombol */
+.arah-btn,
+.arah-nara-link {
+    font-weight: 600 !important;
+}
+
+/* badge */
+.arah-badge {
+    font-weight: 700 !important;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+}
+
+@keyframes naraDot {
+
+    0%, 80%, 100% {
+        opacity: .25;
+        transform: translateY(0);
+    }
+
+    40% {
+        opacity: 1;
+        transform: translateY(-4px);
+    }
+    
+
+
+}
