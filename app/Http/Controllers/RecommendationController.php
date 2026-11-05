@@ -503,12 +503,19 @@ PROMPT;
          * Tidak menyentuh rekomendasi semester lain.
          */
 
-        $candidateIds = $candidateData
+        /*
+         * Hapus SEMUA rekomendasi mahasiswa untuk mata kuliah semester ini,
+         * termasuk baris lama yang sudah tidak valid (misalnya prasyarat
+         * belum terpenuhi). Baris yang valid akan dibuat ulang di langkah 13.
+         */
+
+        $semesterCourseIds = MataKuliah::query()
+            ->where('semester', $targetSemester)
             ->pluck('id')
             ->all();
 
         Rekomendasi::where('mahasiswa_id', $m->id)
-            ->whereIn('mata_kuliah_id', $candidateIds)
+            ->whereIn('mata_kuliah_id', $semesterCourseIds)
             ->delete();
 
 
