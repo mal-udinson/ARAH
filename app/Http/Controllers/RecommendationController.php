@@ -99,6 +99,36 @@ class RecommendationController extends Controller
 
 
         /*
+         * =========================================================
+         * 3B. FILTER PRASYARAT (FIX B1 + B2)
+         * =========================================================
+         *
+         * Buang kandidat yang prasyaratnya belum ada di riwayat nilai.
+         * Berlaku untuk jalur Gemini maupun fallback, karena keduanya
+         * mengambil data dari $candidates.
+         */
+
+        $completedNames = MataKuliah::query()
+            ->whereIn('id', $completedCourseIds)
+            ->pluck('nama')
+            ->map(fn ($nama) => strtolower(trim($nama)))
+            ->all();
+
+        $candidates = $candidates
+            ->filter(function ($course) use ($completedNames) {
+
+                $prasyarat = strtolower(trim((string) $course->prasyarat));
+
+                if ($prasyarat === '' || $prasyarat === 'tidak ada') {
+                    return true;
+                }
+
+                return in_array($prasyarat, $completedNames, true);
+            })
+            ->values();
+
+
+        /*
          * Kalau tidak ada kandidat.
          */
 
