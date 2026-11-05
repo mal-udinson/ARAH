@@ -102,6 +102,7 @@ Route::middleware('auth')->group(function () {
 
         Route::get('/dashboard', [DosenController::class, 'index'])->name('dashboard');
         Route::get('/mahasiswa/{mahasiswaId}', [DosenController::class, 'showMahasiswa'])->whereNumber('mahasiswaId')->name('mahasiswa.show');
+        Route::post('/rekomendasi/{rekomendasiId}/keputusan', [DosenController::class, 'updateRekomendasi'])->whereNumber('rekomendasiId')->name('rekomendasi.keputusan');
 
         // Chat dengan mahasiswa
         Route::get('/chat', [DosenChatController::class, 'dosenIndex'])->name('chat.index');

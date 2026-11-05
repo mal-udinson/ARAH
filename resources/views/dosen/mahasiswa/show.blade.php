@@ -254,6 +254,18 @@
                                     @endforeach
                                 </div>
                             @endif
+                            <div class="dm-keputusan" style="margin-top:12px;padding-top:12px;border-top:1px solid var(--line);">
+                                <p style="font-size:12px;margin:0 0 8px;">Keputusan dosen PA: <b>{{ ucfirst($rek->status) }}</b></p>
+                                <form method="POST" action="{{ route('dosen.rekomendasi.keputusan', $rek->id) }}">
+                                    @csrf
+                                    <textarea name="catatan" rows="2" maxlength="500" placeholder="Catatan (wajib untuk Revisi atau Tolak)" style="width:100%;margin-bottom:8px;"></textarea>
+                                    <div style="display:flex;gap:8px;flex-wrap:wrap;">
+                                        <button type="submit" name="status" value="disetujui" class="ds-btn sm">Setujui</button>
+                                        <button type="submit" name="status" value="revisi" class="ds-btn sm">Revisi</button>
+                                        <button type="submit" name="status" value="ditolak" class="ds-btn sm">Tolak</button>
+                                    </div>
+                                </form>
+                            </div>
                         </div>
                     @endforeach
                 </div>
