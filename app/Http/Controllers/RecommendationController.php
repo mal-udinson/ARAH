@@ -497,6 +497,43 @@ PROMPT;
 
         /*
          * =========================================================
+         * 11B. BATAS TOTAL SKS PER SEMESTER
+         * =========================================================
+         *
+         * Total SKS rekomendasi tidak boleh melebihi batas.
+         * Berlaku untuk jalur Gemini maupun fallback.
+         * Urutan mengikuti urutan pilihan (Gemini atau skor tertinggi).
+         */
+
+        $batasSks = 24;
+        $totalSks = 0;
+
+        $validSelections = $validSelections
+            ->filter(function ($selection) use ($candidateMap, $batasSks, &$totalSks) {
+
+                $course = $candidateMap->get(
+                    (int) $selection['mata_kuliah_id']
+                );
+
+                if (!$course) {
+                    return false;
+                }
+
+                $sks = (int) $course['sks'];
+
+                if ($totalSks + $sks > $batasSks) {
+                    return false;
+                }
+
+                $totalSks += $sks;
+
+                return true;
+            })
+            ->values();
+
+
+        /*
+         * =========================================================
          * 12. HAPUS REKOMENDASI LAMA DARI KANDIDAT SEMESTER INI
          * =========================================================
          *
