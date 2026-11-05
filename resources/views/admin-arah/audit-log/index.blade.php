@@ -228,7 +228,7 @@
                                     </div>
                                 </td>
 
-                                <td data-label="Role">{{ $log->role === 'admin_arah' ? 'Admin ARAH' : 'Admin Kampus' }}</td>
+                                <td data-label="Role">{{ ['admin_arah' => 'Admin ARAH', 'admin_kampus' => 'Admin Kampus', 'dosen' => 'Dosen PA', 'mahasiswa' => 'Mahasiswa'][$log->role] ?? ucfirst((string) $log->role) }}</td>
 
                                 <td data-label="Aksi">
                                     <span class="aa-bd {{ $actionBadge($log->action) }}">{{ $actionLabel($log->action) }}</span>
